@@ -3,13 +3,6 @@
 
 static Circle circle_array[256];
 static int i;
-/*
-void world_apply_gravity(void){
-    for(uint8_t i = 0; i != 255; i++){
-        circle_array[i].acc.y = circle_array[i].force.y / circle_array[i].mass;
-    }
-}
-*/
 
 void world_add_circle(Circle c){
     if(i >= 255) i = 255;
@@ -23,5 +16,11 @@ void world_add_circle(Circle c){
 void world_update(void){
     for(uint8_t j = 0; j < i; j++){
         update_circle(&circle_array[j]);
+    }
+}
+
+void world_draw(SDL_Renderer *m_render){
+    for(uint8_t j = 0; j < i; j++){
+        draw_circle(&circle_array[j], m_render);
     }
 }

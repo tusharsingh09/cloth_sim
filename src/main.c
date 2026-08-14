@@ -32,7 +32,12 @@ static uint8_t init_window(void){
 static void run(void){
     input_loop();
     world_update();
+
+    SDL_SetRenderDrawColor(m_render, 100, 100, 100, 255);
     SDL_RenderClear(m_render);
+
+    world_draw(m_render);
+
     SDL_RenderPresent(m_render);
 }
 
@@ -54,15 +59,7 @@ static void input_loop(void){
 int main(int argc, char **argv){
     init_window();
 
-    Circle c = {
-        (Vector2){0, 0},
-        (Vector2){0, 0},
-        (Vector2){0, 0},
-        (Vector2){0, 0},
-
-        1.0,
-        1.0
-    };
+    Circle c = create_circle((Vector2){100, 100}, 2.0);
 
     world_add_circle(c);
 
