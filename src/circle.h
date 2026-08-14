@@ -1,0 +1,19 @@
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
+#include "vec.h"
+
+typedef struct {
+    Vector2 position;
+    Vector2 velocity;
+    Vector2 force;
+    Vector2 acc;
+
+    float mass;
+    float radius;
+} Circle;
+
+Circle create_circle(Vector2 pos, float mass);
+void update_circle(Circle *c);
+
+#endif // CIRCLE_H
